@@ -11,7 +11,6 @@ Modified by dliu, based on CoinMigrator.h.
 #include "src/NVMObject.h"
 #include "src/Params.h"
 #include "include/NVMainRequest.h"
-
 namespace NVM {
 
 #define MIG_READ_TAG GetTagGenerator( )->CreateTag("MIGREAD")
@@ -50,7 +49,8 @@ class MultiQueueMigrator : public NVMObject
     ncounter_t migrationCount;
     ncounter_t queueWaits;
     ncounter_t bufferedReads;
-	
+	ncounter_t channel_num;
+	uint64_t trace_interval;
     bool CheckIssuable( NVMAddress address, OpType type );
     bool TryMigration( NVMainRequest *request, bool atomic );
     void ChooseVictim( MQMigrator *at, NVMAddress& promo, NVMAddress& victim );
@@ -67,7 +67,7 @@ class MultiQueueMigrator : public NVMObject
 
 	std::list<PageType> *rankingQueues;
 	std::list<uint64_t> DRAMPageList, demotedDRAMList;	
-	//std::map<uint64_t , uint64_t> page_access_times;
+	std::map<uint64_t , uint64_t> page_access_times;
 
 	void JoinQueue(PageType page);
 	void Upgrade(PageType page);

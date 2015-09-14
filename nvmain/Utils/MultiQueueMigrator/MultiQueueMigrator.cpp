@@ -48,6 +48,7 @@ MultiQueueMigrator::MultiQueueMigrator( )
 	rankingQueues = new std::list<PageType>[QUEUE_NUM];
 	file.open("rank-based-page-migration-traces.txt");
 	origin_file.open("no-migration-page-traces.txt");
+	trace_interval = 1000;	//default trace interval
 }
 
 
@@ -74,12 +75,25 @@ void MultiQueueMigrator::Init( Config *config )
     /* If we want to simulate additional latency serving buffered requests. */
     bufferReadLatency = 4;
     config->GetValueUL( "MigrationBufferReadLatency", bufferReadLatency );
-
-    /* 
+	config->GetValueUL("CHANNELS" ,channel_num ); 
+	if( config->KeyExists("TraceInterval"))
+	{
+		trace_interval = config->GetValue("TraceInterval");
+	}
+	/* 
      *  We migrate entire rows between banks, so the column count needs to
      *  match across all channels for valid results.
      */
     numCols = config->GetValue( "COLS" );
+	file<< "access time statistics of every channel every "<<trace_interval<<" cycles"<<std::endl;
+	origin_file<< "access time statistics of every channel every "<<trace_interval<<" cycles"<<std::endl;
+	for( int i=0 ; i<channel_num ;i++)
+	{
+		file<<"channel_"<<i<<"  ";
+		origin_file<<"channel_"<<i<<"  ";
+	}
+	file<<std::endl;
+	origin_file<<std::endl;
 
     AddStat(migrationCount);
     AddStat(queueWaits);
@@ -120,7 +134,6 @@ bool MultiQueueMigrator::RequestComplete( NVMainRequest *request )
             /* A migration read completed, update state. */
             migratorTranslator->SetMigrationState( request->address, MQ_MIGRATION_BUFFERED ); 
 
-		//	std::cout<<"\nBuffered  ######## "<<std::hex<<request->address.GetPhysicalAddress()<<"  FFFFFFFF\n"<<std::endl;
             /* If both requests are buffered, we can attempt to write. */
             bool bufferComplete = false;
 
@@ -135,13 +148,11 @@ bool MultiQueueMigrator::RequestComplete( NVMainRequest *request )
             /* Make a new request to issue for write. Parent will delete current pointer. */
             if( request == promoRequest )
             {
-			//	std::cout<<"\n######  promo_Mig_Read_Comp: "<<std::hex<<request->address.GetPhysicalAddress()<<"\n"<<std::endl;
                 promoRequest = new NVMainRequest( );
                 *promoRequest = *request;
             }
             else if( request == demoRequest )
             {
-			//	std::cout<<"\n######  demo_Mig_Read_Comp: "<<std::hex<<request->address.GetPhysicalAddress()<<"\n"<<std::endl;
                 demoRequest = new NVMainRequest( );
                 *demoRequest = *request;
             }
@@ -180,7 +191,6 @@ bool MultiQueueMigrator::RequestComplete( NVMainRequest *request )
 
                 if( demoIssued )
                 {
-				//	std::cout<<"\ndemo_Mig_Write Issued: "<<std::hex<<demoRequest->address.GetPhysicalAddress()<<"\n"<<std::endl;
                     migratorTranslator->SetMigrationState( demoRequest->address, MQ_MIGRATION_WRITING );
                 }
                 if( promoIssued )
@@ -286,63 +296,21 @@ bool MultiQueueMigrator::TryMigration( NVMainRequest *request, bool atomic )
         }
 		
 		currentTime++; 
-
-		uint64_t pageNo = migratorTranslator->GetAddressKey(request->address);
-		//uint64_t realChannel = GetRealChannel( migratorTranslator, request->address );
- 		uint64_t channelNo = request->address.GetChannel();
-
-		/*
-			if( page_access_times.count(request->address.GetChannel())==0 )
-			{
-				page_access_times[request->address.GetChannel()]=1;
-			}
-			else
-				page_access_times[request->address.GetChannel()]++;
-				*/
-
-			if (GetEventQueue()->GetCurrentCycle()%10000==0 )
-			{
-				file<< migratorTranslator->migrate_access_times[0]<<" "<<
-					migratorTranslator->migrate_access_times[1]<<" "
-					<<migratorTranslator->migrate_access_times[2]<<" "
-					<<migratorTranslator->migrate_access_times[3]<<" "<<std::endl;
-
-				origin_file<<(migratorTranslator->access_times[0]+4)<<" "<<(migratorTranslator->access_times[1]-4)
-							<<" "<<(migratorTranslator->access_times[2]+4)<<" "
-							<<(migratorTranslator->access_times[3]+4)<<std::endl;
-			}
-		#ifdef TRACES
-		//***********************start traces
-		if( migratorTranslator->IsMigrated(request->address))
-		{
-
-			if( page_access_times.count(request->GetChannel())==0 )
-			{
-				page_access_times[request->GetChannel()]=1;
-			}
-			else
-				page_access_times[request->GetChannel()]++;
-
-			if (GetEventQueue()->GetCurrentCycle()%100000==0 )
-			{
-				file<<page_access_times[0]<<" "<<page_access_times[1]<<" "
-					<<page_access_times[2]<<" "<<page_access_times[3]<<" "<<std::endl;
-			}
-			
-			if( page_access_times.count(pageNo)==0)
-			{
-				page_access_times[pageNo] = 1;
-			}
-			else
-				page_access_times[pageNo]++;
 		
-		 file<<request->type<<" "<< request->address.GetChannel()<<" "
-			 <<request->address.GetBank()<<" "<<request->address.GetRow()
-			 <<" "<<page_access_times[pageNo]<<std::endl;
+		//***********************traces start
+		uint64_t pageNo = migratorTranslator->GetAddressKey(request->address);
+ 		uint64_t channelNo = request->address.GetChannel();
+		if (GetEventQueue()->GetCurrentCycle()%trace_interval==0 )
+		{
+			for( int i=0 ; i<channel_num ; i++)
+			{
+				file<<migratorTranslator->migrate_access_times[i]<<"   ";
+				origin_file<< migratorTranslator->access_times[i]<<"   ";
+			}
+			file<<std::endl;
+			origin_file<<std::endl;
 		}
-		#endif
 		//***********************traces end
-	
 	
 		//this request is issued to access dram memory
 		if( channelNo == promotionChannel && !IsInList(DRAMPageList, pageNo) )
