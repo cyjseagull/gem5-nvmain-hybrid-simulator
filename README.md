@@ -9,8 +9,8 @@
 
 ### 1.3 how to attach nvmain with gem5
         (1) environment requirement
-* python version < 3.0;
-* scons >= 0.98.1;
+* python version < 3.0
+* scons >= 0.98.1
 * gcc >= 4.6.0;
 
         (2) compile gem5 with nvmain
