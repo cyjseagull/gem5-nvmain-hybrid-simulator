@@ -11,9 +11,10 @@
 
 2 Cache Optimization Module in gem5-nvmain-hybrid-simulator
 --------------------------------
-  （1）
-  （2）related source code
-  gem5-stable/src/mem/
+    （1）Architecure and Principle of Cache Optimization in DRAM-PCM hybrid memory
+      
+    （2）related source code
+   gem5-stable/src/mem/
   
 3. Rank-Based-Page-Placement Module in hybrid simulator
 --------------------------------
