@@ -18,10 +18,14 @@
         （2）related source code
 * gem5-stable/src/mem/cache/tags/
   
-3. Rank-Based-Page-Placement Module in hybrid simulator
+3. Rank-Based-Page-Placement Module in hybrid simulator implemented by multi-level-queue
 --------------------------------
         （1）Principle of Rank-Based-Page-Placement Strategy
 ![principle of Rank-Based-Page-Placement](https://raw.github.com/cyjseagull/gem5-nvmain-hybrid-simulator/master/images/MultiQue.PNG)
+        （2）related source code
+* nvmain/Utils/MultiQueMigrator/
+* Decoders/Migrator/
+* configuration file example: Config/Hybrid_example.config
 
 
 
