@@ -1,5 +1,5 @@
 # gem5-nvmain-hybrid-simulator
-1 DRAM-NVM Hybrid-Simulator
+1. DRAM-NVM Hybrid-Simulator
 -----------------------------
 ### 1.1 Full System Simultor : gem5
 * Home Page of Simulator：http://www.gem5.org/Main_Page
@@ -21,7 +21,7 @@
 * you can refer to example in directory rapp-test/gcc:--mem-type=nvmain --nvmain-config=nvmain-config-file-path
 
 
-2 Cache Optimization Module in gem5-nvmain-hybrid-simulator
+2. Cache Optimization Module in gem5-nvmain-hybrid-simulator
 --------------------------------
     （1）Architecture and Principle of Cache Optimization in DRAM-PCM hybrid memory 
 ![principle of cache optimization](https://raw.github.com/cyjseagull/gem5-nvmain-hybrid-simulator/master/images/cache-optimization.png)
