@@ -15,6 +15,7 @@
 ![principle of cache optimization](https://raw.github.com/cyjseagull/gem5-nvmain-hybrid-simulator/master/images/cache-optimization.png)
 * adjust cache replacement policy according to cache miss penalty in DRAM-PCM hybrid memory system , for example: evict data block in LLC cache which fetched from PCM is expensive than data block fetched from DRAM . When evicting cache block from LLC cache , evict data block from DRAM first;
 * recalculate cache replacement priority according to penalty of cache miss in memory system and reuse probability of cache block;
+
         （2）related source code
 * gem5-stable/src/mem/cache/tags/
   
