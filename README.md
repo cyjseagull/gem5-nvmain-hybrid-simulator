@@ -11,7 +11,12 @@
 
 2 Cache Optimization Module in gem5-nvmain-hybrid-simulator
 --------------------------------
-3. Rank-Based-Page-Placement Module in gem5-nvmain-hybrid-simulator
+  （1）
+  （2）related source code
+  gem5-stable/src/mem/
+  
+3. Rank-Based-Page-Placement Module in hybrid simulator
 --------------------------------
-4. 
+
+
 
