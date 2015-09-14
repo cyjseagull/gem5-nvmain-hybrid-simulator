@@ -5,7 +5,7 @@
 （1）Home Page of Simulator：http://www.gem5.org/Main_Page
 
 ### 1.2 Memory System Simulator: NVMain
-（1）Home Page of Simulator: http://wiki.nvmain.org/(unfortunately , home page of nvmain has already crashed)
+（1）Home Page of Simulator: http://wiki.nvmain.org/    (unfortunately , home page of nvmain has already crashed)
 
 ### 1.3 how to attach nvmain with gem5
 
@@ -32,6 +32,10 @@
 * Decoders/Migrator/
 * configuration file example: Config/Hybrid_example.config
 * simple example scripts running CPU SPEC2006 benchmarks are placed in directory: gem5-stable/rapp-test
+
+
+4. Programmer-Specific-Page-Migration in DRAM-PCM memory system
+---------------------------------------
 
 
 
