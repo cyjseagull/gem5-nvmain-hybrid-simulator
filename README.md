@@ -12,7 +12,7 @@
 2 Cache Optimization Module in gem5-nvmain-hybrid-simulator
 --------------------------------
     （1）Architecure and Principle of Cache Optimization in DRAM-PCM hybrid memory 
-        ![principle of cache optimization in DRAM-PCM hybrid system](https://raw.github.com/cyjseagull/gem5-nvmain-hybrid-simulator/master/images/cache-optimization.png)
+![principle of cache optimization](https://raw.github.com/cyjseagull/gem5-nvmain-hybrid-simulator/master/images/cache-optimization.png)
     （2）related source code
         gem5-stable/src/mem/cache/tags/
   
