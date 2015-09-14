@@ -1,0 +1,6 @@
+#!/bin/sh
+cd /parsec/install/bin
+/sbin/m5 dumpresetstats
+./blackscholes 4 /parsec/install/inputs/blackscholes/in_16.txt /parsec/install/inputs/blackscholes/out_16.txt
+echo "Done :D"
+

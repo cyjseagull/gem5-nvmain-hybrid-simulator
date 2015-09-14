@@ -1,0 +1,12 @@
+syntax: glob
+build
+parser.out
+parsetab.py
+cscope.files
+cscope.out
+*.pyc
+*~
+.*.swp
+m5out
+src/doxygen
+ext/dramsim2/DRAMSim2

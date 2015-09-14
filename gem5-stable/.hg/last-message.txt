@@ -1,0 +1,1 @@
+Fix having multiple instances of NVMainMemory, such as X86 with more than 3GB of memory

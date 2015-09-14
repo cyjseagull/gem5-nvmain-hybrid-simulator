@@ -1,0 +1,60 @@
+gem5 Simulator System.  http://gem5.org
+gem5 is copyrighted software; use the --copyright option for details.
+
+gem5 compiled Jul 27 2015 09:40:15
+gem5 started Jul 27 2015 09:40:54
+gem5 executing on node348
+command line: ../../build/X86/gem5.opt --stats-file=gem5-DRAMCache-stats.log ../../configs/example/se.py --cpu-type=detailed --cpu-clock=2GHz --mem-type=nvmain --nvmain-config=../../../nvmain/Config/Hybrid_example.config --maxinsts=100000000 --caches --l1i_size 32kB --l1d_size 32kB --l2cache --l2_size 256kB --l3cache --l3_size 1MB --cmd=/home/liao/chenyujie/benchs/cpu_spec2006/benchspec/CPU2006/401.bzip2/exe/bzip2_base.amd64-m64-gcc48-nn --options=/home/liao/chenyujie/benchs/cpu_spec2006/benchspec/CPU2006/401.bzip2/data/ref/input/control -n 1
+Global frequency set at 1000000000000 ticks per second
+NVMainControl: Reading NVMain config file: ../../../nvmain/Config/Hybrid_example.config.
+Creating hook MultiQueueMigrator
+promotion channel is0
+NVMain: GlobalEventQueue: Added a memory subsystem running at 400MHz. My frequency is 2000MHz.
+Reading channel config file: ../../../nvmain/Config/Hybrid_DRAM_channel.config
+Created a First Ready First Come First Serve memory controller!
+
+defaultMemory.channel0.FRFCFS capacity is 1024 MB.
+Reading channel config file: ../../../nvmain/Config/Hybrid_NVM_channel.config
+Created a First Ready First Come First Serve memory controller!
+
+defaultMemory.channel1.FRFCFS capacity is 1024 MB.
+Reading channel config file: ../../../nvmain/Config/Hybrid_NVM_channel.config
+Created a First Ready First Come First Serve memory controller!
+
+defaultMemory.channel2.FRFCFS capacity is 1024 MB.
+Reading channel config file: ../../../nvmain/Config/Hybrid_NVM_channel.config
+Created a First Ready First Come First Serve memory controller!
+
+defaultMemory.channel3.FRFCFS capacity is 1024 MB.
+0: system.remote_gdb.listener: listening for remote gdb #0 on port 7001
+**** REAL SIMULATION ****
+info: Entering event queue @ 0.  Starting simulation...
+spec_init
+Loading Input Data
+Duplicating 98 bytes
+Duplicating 196 bytes
+Duplicating 392 bytes
+Duplicating 784 bytes
+Duplicating 1568 bytes
+Duplicating 3136 bytes
+Duplicating 6272 bytes
+Duplicating 12544 bytes
+Duplicating 25088 bytes
+Duplicating 50176 bytes
+Duplicating 100352 bytes
+Duplicating 200704 bytes
+Duplicating 401408 bytes
+Duplicating 802816 bytes
+warn: instruction 'prefetch_nta' unimplemented
+warn: instruction 'prefetch_nta' unimplemented
+Duplicating 1605632 bytes
+Duplicating 3211264 bytes
+Duplicating 6422528 bytes
+Duplicating 12845056 bytes
+Duplicating 25690112 bytes
+Duplicating 15728640 bytes
+Input data 67108864 bytes in length
+Compressing Input Data, level 5
+info: Increasing stack size by one page.
+info: Increasing stack size by one page.
+Exiting @ tick 449374445000 because a thread reached the max instruction count

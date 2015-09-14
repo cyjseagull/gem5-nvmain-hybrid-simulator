@@ -1,0 +1,19 @@
+[paths]
+default = http://repo.gem5.org/gem5-stable
+
+[extensions]
+mq = 
+
+[ui]
+username = luckydong
+
+# The following lines were automatically added by gem5/SConstruct
+# to provide the gem5 style-checking hooks
+[extensions]
+style = /home/dliu/simulator/gem5-stable/util/style.py
+
+[hooks]
+pretxncommit.style = python:style.check_style
+pre-qrefresh.style = python:style.check_style
+# End of SConstruct additions
+
