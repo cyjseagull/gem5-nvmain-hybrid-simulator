@@ -34,7 +34,7 @@
 * simple example scripts running CPU SPEC2006 benchmarks are placed in directory: gem5-stable/rapp-test
 
 
-4. Programmer-Specific-Page-Migration in DRAM-PCM memory system
+4. Programmer-Specific-Page-Migration in Hybrid memory system
 ---------------------------------------
 
 
