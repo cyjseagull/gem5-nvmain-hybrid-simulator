@@ -14,7 +14,7 @@
     （1）Architecure and Principle of Cache Optimization in DRAM-PCM hybrid memory
       
     （2）related source code
-   gem5-stable/src/mem/
+        gem5-stable/src/mem/cache/tags/
   
 3. Rank-Based-Page-Placement Module in hybrid simulator
 --------------------------------
