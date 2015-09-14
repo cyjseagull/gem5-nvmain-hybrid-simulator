@@ -13,9 +13,9 @@
         * scons >= 0.98.1
         * gcc >= 4.6.0
 * compile gem5 with nvmain
-        * patch gem5 with nvmain patch file: nvmain-classic-gem5-9850
+              * patch gem5 with nvmain patch file: nvmain-classic-gem5-9850
               patch -p1 < final_patch/nvmain-classic-gem5-9850
-        * compile with scons
+              * compile with scons
               scons EXTRAS=nvmain-path -jn (n represents compiling threads num)
 * run system with nvmain memory
         you can refer to example in directory rapp-test/gcc:--mem-type=nvmain --nvmain-config=nvmain-config-file-path
