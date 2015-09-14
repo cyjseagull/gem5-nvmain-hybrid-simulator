@@ -2,10 +2,10 @@
 1 DRAM-NVM Hybrid-Simulator
 -----------------------------
 ### 1.1 Full System Simultor : gem5
-（1）Home Page of Simulator：http://www.gem5.org/Main_Page
+* Home Page of Simulator：http://www.gem5.org/Main_Page
 
 ### 1.2 Memory System Simulator: NVMain
-（1）Home Page of Simulator: http://wiki.nvmain.org/    (unfortunately , home page of nvmain has already crashed)
+* Home Page of Simulator: http://wiki.nvmain.org/    (unfortunately , home page of nvmain has already crashed)
 
 ### 1.3 how to attach nvmain with gem5
 * environment requirement
@@ -14,9 +14,9 @@
         * gcc >= 4.6.0
 * compile gem5 with nvmain
         * patch gem5 with nvmain patch file: nvmain-classic-gem5-9850
-        patch -p1 < final_patch/nvmain-classic-gem5-9850
+              patch -p1 < final_patch/nvmain-classic-gem5-9850
         * compile with scons
-        scons EXTRAS=nvmain-path -jn (n represents compiling threads num)
+              scons EXTRAS=nvmain-path -jn (n represents compiling threads num)
 * run system with nvmain memory
         you can refer to example in directory rapp-test/gcc:--mem-type=nvmain --nvmain-config=nvmain-config-file-path
 
