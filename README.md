@@ -5,7 +5,7 @@
 * Home Page of Simulator：http://www.gem5.org/Main_Page
 
 ### 1.2 Memory System Simulator: NVMain
-* Home Page of Simulator: http://wiki.nvmain.org/    (unfortunately , home page of nvmain has already crashed)
+* Home Page of Simulator: http://wiki.nvmain.org/
 
 ### 1.3 how to attach nvmain with gem5
         (1) environment requirement
@@ -13,7 +13,7 @@
 * scons >= 0.98.1
 * gcc >= 4.6.0;
 
-        (2) compile gem5 with nvmain
+        (2) compile gem5 with nvmain (patch file can be found in gem5-stable/final_patch/nvmain-classic-gem5-9850)
 * patch gem5 with nvmain patch file : patch -p1 < final_patch/nvmain-classic-gem5-9850
 * compile with scons : scons EXTRAS=nvmain-path -jn (n represents compiling threads num)
 
