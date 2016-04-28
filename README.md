@@ -13,7 +13,7 @@
 * scons >= 0.98.1
 * gcc >= 4.6.0;
 
-        (2) compile gem5 with nvmain (patch file can be found in gem5-stable/final_patch/nvmain-classic-gem5-9850)
+(2) compile gem5 with nvmain (patch file can be found in gem5-stable/final_patch/nvmain-classic-gem5-9850)
 * patch gem5 with nvmain patch file : patch -p1 < final_patch/nvmain-classic-gem5-9850
 * compile with scons : scons EXTRAS=nvmain-path -jn (n represents compiling threads num)
 
